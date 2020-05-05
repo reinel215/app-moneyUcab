@@ -1,0 +1,26 @@
+<div class="notificacion" *ngIf="mostrar">
+    <div class="notificacion-header" 
+    [class.success-header]="color==='success'"
+    [class.danger-header]="color==='danger'"
+    [class.warning-header]="color==='warning'"
+    >
+        <h5> {{titulo}} </h5>
+
+        <ion-buttons>
+            <ion-button (click)="cerrar()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </div>
+
+    <hr>
+
+    <div class="notificacion-content" 
+    [class.success-content]="color==='success'"
+    [class.danger-content]="color==='danger'"
+    [class.warning-content]="color==='warning'"
+    >
+        <p> {{mensaje}} </p>
+    </div>
+
+</div>

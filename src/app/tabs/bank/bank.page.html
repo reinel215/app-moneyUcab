@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="light_violet">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>MoneyUcab</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+
+  
+  <div class="panel-saldo">
+
+    <p>  <ion-label class="panel-label">Saldo disponible:</ion-label>  <ion-label class="panel-saldo-monto">B.s. 25.000</ion-label>   </p>
+  
+  </div>
+  
+  
+ 
+
+
+  <ion-list class="background-color-light-grey">
+
+    <ion-card *ngFor="let transaccion of transacciones" [routerLink]="['/tabs/bank/detalle', transaccion.numReferencia]" >
+      <ion-card-header>
+       
+        
+        <ion-card-subtitle> Dest:  <ion-label class="bold">J-{{transaccion.cuenta}}</ion-label> <ion-label class="full-right position-absolute" > {{transaccion.fecha | date: "dd/MM/yyyy"}} </ion-label>  </ion-card-subtitle>
+        
+        
+        <ion-card-title> 
+          <ion-label class="bold">Monto: </ion-label>  <ion-label class="bold" 
+          [class.ingreso]="transaccion.isPay===false" 
+          [class.egreso]="transaccion.isPay===true" 
+          > {{transaccion.cantidad | numeroPunteado}} </ion-label>
+        </ion-card-title>
+
+
+      </ion-card-header>
+    
+      <ion-card-content>
+        
+        <p class="margin-top-5p inline"> <ion-label class="bold">Descripcion:</ion-label>  </p>
+        <div class="text-overflow">{{transaccion.descripcion}}</div>
+
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>

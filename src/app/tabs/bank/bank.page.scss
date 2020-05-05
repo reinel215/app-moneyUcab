@@ -1,0 +1,128 @@
+@import '../../../colores.scss';
+
+
+.bold{
+    font-weight: bold;
+}
+
+.inline{
+    display: inline;
+}
+
+
+ion-card{
+    cursor: pointer;
+}
+
+
+.margin-top-5p{
+    margin-top: 5px;
+}
+
+.margin-left-auto{
+    margin-left: auto;
+}
+
+
+.text-overflow{
+    position: absolute;
+
+    width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+
+.full-right{
+    right: 0;
+}
+
+
+.position-absolute{
+    position: absolute;
+}
+
+
+
+
+.background-color-light-grey{
+    background-color: #dbdbdb;
+}
+
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+
+    hr{
+        border-top: solid 1px black;
+    }
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+
+    ion-button{
+        flex: 0 0 50%;
+    }
+}
+
+
+@mixin panel() {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    position: relative;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+.panel-saldo{
+    @include panel();
+    p{
+        margin: 7px 0px;
+    }
+
+
+    border-bottom: solid 1px black;
+}
+
+.panel-buttons{
+    @include panel();
+
+    ion-button{
+        margin: 0px;  
+    }
+}
+
+
+
+.panel-label{
+    margin-left: 10px;
+
+}
+
+.panel-saldo-monto{
+    position: absolute;
+    right: 10px;
+    color: $verde-dinero;
+}
+
+
+
+.ingreso{
+    color: $verde-dinero;
+}
+
+.egreso{
+    color: $rojo-dinero;
+}

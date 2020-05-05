@@ -1,5 +1,7 @@
 {
   "name": "MoneyUcab_monedero",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

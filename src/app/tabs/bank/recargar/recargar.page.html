@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="light_violet">
+
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/tabs/bank" ></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Recargar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+
+
+  <form (ngSubmit)="recargar()" class="margin-top-50px">
+    <ion-item>
+      <ion-label position="floating">Cuenta Bancaria</ion-label>
+      <ion-input type="number" pattern="^[0-9]+$"  [(ngModel)]="cuentaBancaria" name="cuenta"></ion-input>
+    </ion-item>
+  
+  
+    <ion-item>
+      <ion-label position="floating">Monto</ion-label>
+      <ion-input type="number" pattern="^[0-9]+$" [(ngModel)]="monto" name="cantidad"></ion-input>
+    </ion-item>
+  
+  
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input  [(ngModel)]="descripcion" name="descripcion"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" expand="block" color="light_violet" class="margin-top-50px button-submit-recarga" fill="outline">Recargar</ion-button>
+  </form>
+  
+
+
+</ion-content>

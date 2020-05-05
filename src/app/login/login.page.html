@@ -1,0 +1,38 @@
+<ion-header class="login-header">
+
+</ion-header>
+
+<ion-content>
+
+
+  <ion-img src="../../assets/img/logo_size.jpg" class="login-imagen"></ion-img>
+
+  
+  <form (ngSubmit)="login()">
+
+    
+    <ion-item class="login-ion-item">
+      <ion-label position="floating">Documento de Identificacion</ion-label>
+      <ion-input type="number" [(ngModel)]="numeroIdentificacion" pattern="^[0-9]+$" name="documento" ></ion-input>
+    </ion-item>
+  
+    <ion-item class="login-ion-item">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="contrasenia" name="contrasenia" ></ion-input>
+    </ion-item>
+  
+    <p class="parrafo-centrado"> <span>   ¿Olvidaste tu contraseña?</span> <a routerLink="/recover-password"> Recuperala aqui</a></p>
+   
+    
+  
+    <ion-button id="ingresar-button" expand="block" type="submit"  color="light_violet">Ingresar</ion-button>
+  
+    <p class="parrafo-centrado"> <span>¿Aun no tienes cuenta?</span> <a href="www.google.com">creala aqui</a></p>
+  
+
+  </form>
+
+
+  <div class="login-footer"></div>
+</ion-content>
+

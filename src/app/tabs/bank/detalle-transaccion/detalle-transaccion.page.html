@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="light_violet">
+
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/tabs/bank" ></ion-back-button>
+    </ion-buttons>
+
+    <ion-title> Detalle operacion </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  
+  
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <h3 class="item__property__title">Referencia:</h3> <h4 class="item__property">  {{ transaccion.numReferencia}} </h4>
+    </ion-item>
+
+    <ion-item>
+      <h3 class="item__property__title">Cuenta:</h3> <h4 class="item__property">  {{ transaccion.cuenta}} </h4>
+    </ion-item>
+
+    <ion-item>
+      <h3 class="item__property__title">Monto:</h3> <h4 class="item__property">  {{ transaccion.cantidad}} </h4>
+    </ion-item>
+
+
+    <ion-item>
+      <h3 class="item__property__title">Fecha:</h3> <h5 class="item__property item__property_fecha">  {{ transaccion.fecha | date:'dd/MM/yyyy h:mm a'}} </h5>
+    </ion-item>
+
+    <ion-item>
+      <h3 class="item__property__title">Origen:</h3> <h4 class="item__property">  {{ transaccion.modalidad}} </h4>
+    </ion-item>
+
+
+
+      <h3 class="item__property__title item__property__title__center">Descripcion</h3>
+      <div class="item_description">
+        <p > {{transaccion.descripcion}} </p>
+      </div>
+  </ion-list>
+
+
+</ion-content>

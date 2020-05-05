@@ -1,0 +1,113 @@
+@import '../../../colores.scss';
+
+
+/*clases para colores de notificacion*/
+
+.success-header{
+    background-color: $verde-success;
+    color: black;
+}
+.success-content{
+    background-color: $verde-success-light;
+    color: black;
+}
+
+.danger-header{
+    background-color: $rojo-danger;
+    color: white;
+}
+
+.danger-content{
+    background-color: $rojo-danger-light;
+    color: white;
+}
+
+.warning-header{
+    background-color: $amarillo-warning;
+    color: black;
+}
+.warning-content{
+    background-color: $amarillo-warning-light;
+    color: black;
+}
+
+
+
+
+
+
+
+
+/*css la pocision de los contenedores*/
+.notificacion{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+
+
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 80%;
+
+
+    text-align: center;
+
+    font-size: smaller;
+
+    max-height: 100px;
+
+
+    padding-left: 5px;
+}
+
+
+.notificacion-header{
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height: 100%;
+
+
+    display: flex;
+    h5{
+        font-weight: bold;
+        padding-left: 10px;
+        text-align: start;
+        font-style: italic;
+        flex: 0 0 80%;
+    }
+
+    ion-buttons{
+        flex: 0 0 20%;
+        ion-button{
+            width: 100%;
+            height: 100%;
+
+            ion-icon{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.notificacion-content{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+hr{
+    margin: 0;
+    width: 100%;
+    border-top: solid 1px black;
+}
+

@@ -74,6 +74,58 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+
+  //CREADOS POR EL USUARIO
+
+  --ion-color-light_violet: #b34763;
+  --ion-color-light_violet-rgb: 179,71,99;
+  --ion-color-light_violet-contrast: #ffffff;
+  --ion-color-light_violet-contrast-rgb: 255,255,255;
+  --ion-color-light_violet-shade: #9e3e57;
+  --ion-color-light_violet-tint: #bb5973;
+
+
+
+  --ion-color-violet: #5b2333;
+  --ion-color-violet-rgb: 91,35,51;
+  --ion-color-violet-contrast: #ffffff;
+  --ion-color-violet-contrast-rgb: 255,255,255;
+  --ion-color-violet-shade: #501f2d;
+  --ion-color-violet-tint: #6b3947;
+
+
+
+  --ion-color-invert_violet: #ffffff;
+  --ion-color-invert_violet-rgb: 255,255,255;
+  --ion-color-invert_violet-contrast: #5b2333;
+  --ion-color-invert_violet-contrast-rgb: 0,0,0;
+  --ion-color-invert_violet-shade: #e0e0e0;
+  --ion-color-invert_violet-tint: #ffffff;
+}
+
+
+
+$customColors: ('light_violet','violet','invert_violet');
+
+@each $color in $customColors {
+
+    .ion-color-#{$color} {
+
+        --ion-color-base: var(--ion-color-#{$color}) !important;
+
+        --ion-color-base-rgb: var(--ion-color-#{$color}-rgb) !important;
+
+        --ion-color-contrast: var(--ion-color-#{$color}-contrast) !important;
+
+        --ion-color-contrast-rgb: var(--ion-color-#{$color}-contrast-rgb) !important;
+
+        --ion-color-shade: var(--ion-color-#{$color}-shade) !important;
+
+        --ion-color-tint: var(--ion-color-#{$color}-tint) !important;
+
+    }
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -145,6 +197,10 @@
     --ion-color-light-contrast-rgb: 255,255,255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+
+
+
+
   }
 
   /*

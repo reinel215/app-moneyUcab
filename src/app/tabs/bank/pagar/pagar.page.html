@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="light_violet">
+
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/tabs/bank" ></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Pagar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <form (ngSubmit)="pagar()" class="margin-top-50px">
+
+    <ion-item>
+      <ion-label position="floating">Documento de destino</ion-label>
+      <ion-input type="number" pattern="^[0-9]+$"  [(ngModel)]="documentoIdentificacion" name="identificacion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Monto</ion-label>
+      <ion-input type="number" pattern="^[0-9]+$"  [(ngModel)]="monto" name="monto"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input    [(ngModel)]="descripcion" name="descripcion"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" expand="block" color="light_violet" class="margin-top-50px button-submit-pago" fill="outline">Realizar pago</ion-button>
+
+
+  </form>
+
+</ion-content>
