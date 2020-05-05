@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
     //usamos el servicio para la verificacion de los numeros que nos retornara un boolean
     if(this.validarCamposService.soloNumerosEnteros(this.numeroIdentificacion) && (this.contrasenia !== '')){ 
 
-      this.router.navigate(['tabs/bank'])
+      this.router.navigate(['bank'])
 
     } 
     else{

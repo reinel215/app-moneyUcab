@@ -35,19 +35,24 @@ export class AppComponent {
     [
       {
         title : "Recargar",
-        url   : "/tabs/bank/recargar",
+        url   : "/bank/recargar",
         icon  : "cash-outline"
       },
       {
         title : "Pagar",
-        url   : "/tabs/bank/pagar",
+        url   : "/bank/pagar",
         icon  : "wallet-outline"
       },
       {
         title : "Reintegro de operaciones",
-        url   : "/tabs/bank/reintegro",
+        url   : "/bank/reintegro",
         icon  : "lock-open-outline"
       },
+      {
+        title : "Usuario",
+        url : "/bank/usuario",
+        icon : "person-outline"
+      }
     ]
   }
 

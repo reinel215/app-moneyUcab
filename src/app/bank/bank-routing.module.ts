@@ -28,6 +28,10 @@ const routes: Routes = [
   {
     path: 'reintegro',
     loadChildren: () => import('./reintegro/reintegro.module').then( m => m.ReintegroPageModule)
+  },
+  {
+    path: 'usuario',
+    loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
   }
 ];
 

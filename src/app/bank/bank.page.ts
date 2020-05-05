@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BankService } from "../../servicios/bank.service";
-import { Transaccion } from "../../interfaces/transaccion";
+import { BankService } from "../servicios/bank.service";
+import { Transaccion } from "../interfaces/transaccion";
 
 @Component({
   selector: 'app-bank',

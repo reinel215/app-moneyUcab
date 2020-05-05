@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { BankPageRoutingModule } from './bank-routing.module';
 
 import { BankPage } from './bank.page';
-import { PipeModule } from "../../pipes/pipes.module";
+import { PipeModule } from "../pipes/pipes.module";
 
 @NgModule({
   imports: [
