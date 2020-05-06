@@ -78,44 +78,29 @@ ion-card{
 @mixin panel() {
     width: 100%;
     height: auto;
-    background-color: white;
-    position: relative;
+    background-color: #3880ff;
+    color: white;
     font-family: sans-serif;
     font-size: 15px;
-    font-weight: bold;
 }
 
 
 .panel-saldo{
+    padding: 5px;
     @include panel();
-    p{
-        margin: 7px 0px;
+    p{  
+        font-weight: bold;
+        margin: 0px;
+        text-align: center;
     }
 
-
-    border-bottom: solid 1px black;
-}
-
-.panel-buttons{
-    @include panel();
-
-    ion-button{
-        margin: 0px;  
-    }
-}
-
-
-
-.panel-label{
-    margin-left: 10px;
 
 }
 
 .panel-saldo-monto{
-    position: absolute;
-    right: 10px;
     color: $verde-dinero;
 }
+
 
 
 
