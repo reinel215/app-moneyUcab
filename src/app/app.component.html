@@ -13,6 +13,21 @@
                  {{pages.title}} 
           </ion-item>
         </ion-menu-toggle>
+
+        <ion-menu-toggle (click)="cerrarSesion()" auto-hide="false" class="menu-opcion" >
+
+          <ion-item >
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            Cerrar sesion 
+          </ion-item>
+
+        </ion-menu-toggle>
+
+
+
+ 
+
+
         </ion-list>
       </ion-content>
     </ion-menu>
