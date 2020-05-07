@@ -15,12 +15,15 @@ import { registerLocaleData } from "@angular/common";
 
 import localeEsVe from "@angular/common/locales/es-VE";
 
+
+import { HttpClientModule } from "@angular/common/http";
+
 registerLocaleData(localeEsVe, 've')
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   exports:[],
   providers: [
     StatusBar,

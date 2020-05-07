@@ -9,11 +9,15 @@ import { Transaccion } from "../interfaces/transaccion";
 })
 export class BankPage implements OnInit {
 
-  transacciones : Transaccion[] = [];
+  transacciones : Transaccion[];
 
   constructor(private bankService : BankService) { }
 
   ngOnInit() {
+    this.bankService.actualizarTransacciones()
+    .then( data => {
+      this.transacciones = data;
+    } )
   }
 
   ionViewWillEnter(){

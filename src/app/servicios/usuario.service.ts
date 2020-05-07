@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from "../interfaces/usuario";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,20 @@ export class UsuarioService {
     numeroIdentificacion : 27042411
   };
 
+  private isLogged : boolean = false;
 
 
-  constructor() { }
+
+  constructor(private http : HttpClient) { }
+
+
+  getIsLogged() : boolean{
+    return this.isLogged;
+  }
+
+  setIsLogged(estado : boolean): void {
+    this.isLogged = estado;
+  }
 
 
   getAtributtes() : Usuario{
@@ -36,6 +48,20 @@ export class UsuarioService {
 
   mostrar(){
     console.log(this.usuario);
+  }
+
+
+  async iniciarSecion(documento, contraseña) {
+    let usuario = await this.http.get<any>('http://my-json-server.typicode.com/reinel215/fakeAPI/usuario').toPromise();
+    
+
+    if ( (documento == usuario.documentoIdentificacion) && (contraseña == usuario.password) ){
+      this.isLogged = true;
+      return true;
+    }
+
+    return false;
+
   }
 
 }

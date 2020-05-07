@@ -4,6 +4,7 @@ import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
+import { UsuarioService } from './servicios/usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public alertController: AlertController,
-    private router : Router
+    private router : Router,
+    private usuarioService : UsuarioService
   ) {
     this.initializeApp();
     this.sideMenu();
@@ -71,6 +73,7 @@ export class AppComponent {
         }, {
           text: 'Cerrar',
           handler: () => {
+            this.usuarioService.setIsLogged(false);
             this.router.navigate(['/login']);
           }
         }

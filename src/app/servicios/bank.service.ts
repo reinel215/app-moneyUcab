@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Transaccion } from "../interfaces/transaccion";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,56 +9,20 @@ export class BankService {
 
   private numReferenciaPrueba: number = 0; 
 
-  private transacciones : Transaccion[] = [
-    {
-      fecha : new Date(),
-      cuenta : '10281001',
-      cantidad : 240500,
-      modalidad : 'm', //monedero o billetera
-      descripcion : "2 kilos de carne y cereal",
-      numReferencia : 1542,
-      isPay: true
-    },
-    {
-      fecha : new Date(),
-      cuenta : '11200813',
-      cantidad : 4050500,
-      modalidad : 'b', //monedero o billetera
-      descripcion : "pago de los muy buenos masajes",
-      numReferencia : 2000,
-      isPay: false
-    },
-    {
-      fecha : new Date(),
-      cuenta : '27042411',
-      cantidad : 500000,
-      modalidad : 'm', //monedero o billetera
-      descripcion : "pago Xbox one ultima generacion",
-      numReferencia : 2500,
-      isPay: true
-    },
-    {
-      fecha : new Date(),
-      cuenta : '355964412',
-      cantidad : 100000000,
-      modalidad : 'b', //monedero o billetera
-      descripcion : "cauchos de repuesto",
-      numReferencia : 3000,
-      isPay: false
-    },
-    {
-      fecha : new Date(),
-      cuenta : '15649743',
-      cantidad : 50000,
-      modalidad : 'm', //monedero o billetera
-      descripcion : "carne de primera",
-      numReferencia : 3500,
-      isPay: true
-    },
+  private transacciones : Transaccion[];
 
-  ];
+  constructor(private http : HttpClient) { }
 
-  constructor() { }
+
+
+
+
+  async actualizarTransacciones(){
+    let data = await this.http.get<Transaccion[]>('http://my-json-server.typicode.com/reinel215/fakeAPI/operaciones').toPromise();
+    this.transacciones = data;
+    return this.transacciones;
+
+  }
 
   getTransacciones(){
     return this.transacciones;
@@ -105,6 +70,8 @@ export class BankService {
 
     this.transacciones.push(newTransaccion);
   }
+
+
 
 
 
