@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from "../interfaces/usuario";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
+
+  public SUCCESS : number = 0;
+  public ERR_TRANSMISION : number = 1;
+  public ERR_INVALIDO : number = 2;
 
   private usuario : Usuario ={
     nombre : 'nombre',
@@ -51,16 +57,24 @@ export class UsuarioService {
   }
 
 
-  async iniciarSecion(documento, contraseña) {
-    let usuario = await this.http.get<any>('http://my-json-server.typicode.com/reinel215/fakeAPI/usuario').toPromise();
+  async iniciarSecion(documento, contraseña) : Promise<number>  {
+    let usuario;
+
+    try{
+      usuario = await this.http.get<any>('http://my-json-server.typicode.com/reinel215/fakeAPI/usuario').toPromise()
+    }
+    catch(err)  {
+      console.log(err);
+      return this.ERR_TRANSMISION;
+    };
     
 
     if ( (documento == usuario.documentoIdentificacion) && (contraseña == usuario.password) ){
       this.isLogged = true;
-      return true;
+      return this.SUCCESS;
     }
 
-    return false;
+    return this.ERR_INVALIDO;
 
   }
 
