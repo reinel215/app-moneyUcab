@@ -16,37 +16,44 @@
     <p>  <ion-label >Saldo:</ion-label>  <ion-label>25.000 B.s.</ion-label>   </p>
   
   </div>
-  
-  
- 
 
 
-  <ion-list class="background-color-light-grey">
-
-    <ion-card *ngFor="let transaccion of transacciones" [routerLink]="['/bank/detalle', transaccion.numReferencia]" >
-      <ion-card-header>
-       
-        
-        <ion-card-subtitle> Dest:  <ion-label class="bold">J-{{transaccion.cuenta}}</ion-label> <ion-label class="full-right position-absolute" > {{transaccion.fecha | date: "dd/MM/yyyy"}} </ion-label>  </ion-card-subtitle>
-        
-        
-        <ion-card-title> 
-          <ion-label class="bold">Monto: </ion-label>  <ion-label class="bold" 
-          [class.ingreso]="transaccion.isPay===false" 
-          [class.egreso]="transaccion.isPay===true" 
-          > {{transaccion.cantidad | numeroPunteado}} </ion-label>
-        </ion-card-title>
 
 
-      </ion-card-header>
+  <ion-list class="background-color-light-grey"
+  [class.background-color-light-grey]="cargando===false"
+  >
     
-      <ion-card-content>
+    <div *ngIf="cargando else operaciones" class="contenedor-spinner">
+      <ion-spinner color="light_violet" ></ion-spinner>
+    </div>
+    
+    <ng-template #operaciones>
+      <ion-card *ngFor="let transaccion of transacciones" [routerLink]="['/bank/detalle', transaccion.numReferencia]" >
+        <ion-card-header>
         
-        <p class="margin-top-5p inline"> <ion-label class="bold">Descripcion:</ion-label>  </p>
-        <div class="text-overflow">{{transaccion.descripcion}}</div>
-
-      </ion-card-content>
-    </ion-card>
+          
+          <ion-card-subtitle> Dest:  <ion-label class="bold">J-{{transaccion.cuenta}}</ion-label> <ion-label class="full-right position-absolute" > {{transaccion.fecha | date: "dd/MM/yyyy"}} </ion-label>  </ion-card-subtitle>
+          
+          
+          <ion-card-title> 
+            <ion-label class="bold">Monto: </ion-label>  <ion-label class="bold" 
+            [class.ingreso]="transaccion.isPay===false" 
+            [class.egreso]="transaccion.isPay===true" 
+            > {{transaccion.cantidad | numeroPunteado}} </ion-label>
+          </ion-card-title>
+  
+  
+        </ion-card-header>
+      
+        <ion-card-content>
+          
+          <p class="margin-top-5p inline"> <ion-label class="bold">Descripcion:</ion-label>  </p>
+          <div class="text-overflow">{{transaccion.descripcion}}</div>
+  
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
 
   </ion-list>
 
@@ -54,7 +61,7 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="light_violet">
+    <ion-fab-button color="light_violet" (click)="refrescar()">
       <ion-icon name="refresh"></ion-icon>
     </ion-fab-button>
   </ion-fab>
