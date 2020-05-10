@@ -18,8 +18,7 @@ export class NotificacionComponent implements OnInit {
 
   @Output() cerrarOut = new EventEmitter<string>();
 
-  constructor() {
-   }
+  constructor() {}
 
   ngOnInit() {}
 

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { BankPageRoutingModule } from './bank-routing.module';
 
 import { BankPage } from './bank.page';
+import { OperacionCardComponent } from "../componentes/operacion-card/operacion-card.component";
 import { PipeModule } from "../pipes/pipes.module";
 
 @NgModule({
@@ -17,6 +18,6 @@ import { PipeModule } from "../pipes/pipes.module";
     BankPageRoutingModule,
     PipeModule
   ],
-  declarations: [BankPage]
+  declarations: [BankPage,OperacionCardComponent]
 })
 export class BankPageModule {}

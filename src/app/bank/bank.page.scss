@@ -24,15 +24,7 @@ ion-card{
 }
 
 
-.text-overflow{
-    position: absolute;
 
-    width: 60%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-    white-space: nowrap;
-}
 
 .inline-block{
     display: inline-block;
@@ -99,17 +91,6 @@ ion-card{
 
 .panel-saldo-monto{
     color: $verde-dinero;
-}
-
-
-
-
-.ingreso{
-    color: $verde-dinero;
-}
-
-.egreso{
-    color: $rojo-dinero;
 }
 
 

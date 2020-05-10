@@ -1,0 +1,43 @@
+@import '../../../colores.scss';
+
+.ingreso{
+    color: $verde-dinero;
+}
+
+.egreso{
+    color: $rojo-dinero;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.inline{
+    display: inline;
+}
+
+.margin-top-5p{
+    margin-top: 5px;
+}
+
+
+
+.text-overflow{
+    position: absolute;
+
+    width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+.full-right{
+    right: 0;
+}
+
+
+.position-absolute{
+    position: absolute;
+}
