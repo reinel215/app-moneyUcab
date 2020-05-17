@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BankService } from "../servicios/bank.service";
 import { Transaccion } from "../interfaces/transaccion";
+import { Router } from '@angular/router';
+import { UsuarioService } from "../servicios/usuario.service";
 
 @Component({
   selector: 'app-bank',
@@ -9,31 +11,42 @@ import { Transaccion } from "../interfaces/transaccion";
 })
 export class BankPage implements OnInit {
   cargando : boolean = true;
-  transacciones : Transaccion[];
+  transacciones : any;
+  saldo : any ;
 
-  constructor(private bankService : BankService) { }
+
+
+  constructor(
+    private bankService : BankService, 
+    public router : Router,
+    private usuarioService : UsuarioService
+    ) {
+  }
 
   ngOnInit() {
     this.bankService.actualizarTransacciones()
     .then( data => {
-      this.transacciones = data;
+      [this.transacciones,this.saldo] = data;
       this.cargando = false;
-    } )
+    })
+    
   }
 
   ionViewWillEnter(){
     this.transacciones = this.bankService.getTransacciones();
-  
+    this.saldo = this.bankService.getSaldo();
   }
 
-
-  funcion(){
-    console.log("hola mundo");
-  }
 
 
   refrescar(){
     this.cargando = true;
+
+    this.bankService.actualizarTransacciones()
+    .then( data => {
+      [this.transacciones,this.saldo] = data;
+      this.cargando = false;
+    } )
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform, AlertController } from '@ionic/angular';
+import { Platform, AlertController, IonicModule } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -27,9 +27,41 @@ export class AppComponent {
     this.sideMenu();
   }
 
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Cerrar sesion',
+      message: 'Estas seguro que deseas cerrar la sesión?',
+      buttons: [
+        {
+          text: 'Quedarme',
+          role: 'cancel'
+        }, {
+          text: 'Cerrar',
+          handler: () => {
+            this.usuarioService.setIsLogged(false);
+            this.router.navigate(['/login']);
+          }
+        }
+      ]
+    })
+    await alert.present();
+  }
+
   initializeApp() {
+
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.platform.backButton.subscribeWithPriority(9999, () => {
+
+        if (this.router.url == '/bank')
+        this.presentAlertConfirm();
+        else if (this.router.url == '/login')
+        navigator['app'].exitApp();
+        else
+        window.history.back();
+      });
+      this.statusBar.backgroundColorByHexString('#5b2333');
+      this.statusBar.show();
+      
       this.splashScreen.hide();
     });
   }
@@ -61,26 +93,6 @@ export class AppComponent {
     ]
   }
 
-
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
-      header: 'Cerrar sesion',
-      message: 'Estas seguro que deseas cerrar la sesión?',
-      buttons: [
-        {
-          text: 'Quedarme',
-          role: 'cancel'
-        }, {
-          text: 'Cerrar',
-          handler: () => {
-            this.usuarioService.setIsLogged(false);
-            this.router.navigate(['/login']);
-          }
-        }
-      ]
-    })
-    await alert.present();
-  }
 
 
   cerrarSesion(){

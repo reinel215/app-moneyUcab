@@ -10,30 +10,32 @@
 <ion-content >
 
 
-  
-  <div class="panel-saldo">
 
-    <p>  <ion-label >Saldo:</ion-label>  <ion-label>25.000 B.s.</ion-label>   </p>
-  
+
+  <div *ngIf="cargando else operaciones" class="contenedor-spinner">
+    <ion-spinner color="light_violet" ></ion-spinner>
   </div>
 
 
+  <ng-template  #operaciones>
+    <div class="panel-saldo">
 
-
-  <ion-list class="background-color-light-grey"
-  [class.background-color-light-grey]="cargando===false"
-  >
+      <p>  <ion-label >Saldo:</ion-label>  <ion-label> {{saldo | numeroPunteado}} </ion-label>   </p>
     
-    <div *ngIf="cargando else operaciones" class="contenedor-spinner">
-      <ion-spinner color="light_violet" ></ion-spinner>
     </div>
+  
+  
+  
+  
+    <ion-list
+    [class.background-color-light-grey]="cargando===false"
+    >
     
-    <ng-template #operaciones>
-      <app-operacion-card *ngFor="let transaccion of transacciones" [transaccion]="transaccion"></app-operacion-card>
-    </ng-template>
-
-  </ion-list>
-
+    
+    <app-operacion-card *ngFor="let transaccion of transacciones" [transaccion]="transaccion"></app-operacion-card>
+  
+    </ion-list>
+  </ng-template>
 
 
 

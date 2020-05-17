@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
 
     const loading = await this.loadingController.create({
       spinner: "bubbles",
-      duration: 5000,
+      duration: 120000,
       message: 'Espere por favor...',
       translucent: true,
       cssClass: 'custom-class custom-loading',

@@ -11,6 +11,8 @@ export class BankService {
 
   private transacciones : Transaccion[];
 
+  private saldo : number = 0;
+
   constructor(private http : HttpClient) { }
 
 
@@ -18,9 +20,11 @@ export class BankService {
 
 
   async actualizarTransacciones(){
-    let data = await this.http.get<Transaccion[]>('http://my-json-server.typicode.com/reinel215/fakeAPI/operaciones').toPromise();
-    this.transacciones = data;
-    return this.transacciones;
+    this.transacciones = await this.http.get<Transaccion[]>('http://my-json-server.typicode.com/reinel215/fakeAPI/operaciones').toPromise();
+    
+    let objeto = await this.http.get<any>('http://my-json-server.typicode.com/reinel215/fakeAPI/saldo').toPromise();
+    this.saldo = objeto.saldo;
+    return [this.transacciones,this.saldo];
 
   }
 
@@ -36,6 +40,10 @@ export class BankService {
         return numero === transaccionId
       } )
     }
+  }
+
+  getSaldo(){
+    return this.saldo;
   }
 
   recargar( cuenta: string, cantidad : number, descripcion : string ){
@@ -69,6 +77,7 @@ export class BankService {
     }
 
     this.transacciones.push(newTransaccion);
+    this.saldo-=monto;
   }
 
 
