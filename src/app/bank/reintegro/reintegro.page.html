@@ -11,9 +11,37 @@
 
 <ion-content>
 
+  <div *ngIf="cargando else operaciones" class="contenedor-spinner">
+    <ion-spinner color="light_violet" ></ion-spinner>
+  </div>
 
-  <ion-list class="background-color-light-grey">
+  <ng-template #operaciones>
 
-  </ion-list>
+
+
+    
+    <ion-list class="background-color-light-grey" *ngIf="hayBloqueadas else mensaje" >
+
+      <app-bloqueada-card *ngFor="let bloqueada of bloqueadas" [transaccion]="bloqueada"></app-bloqueada-card>
+
+
+    </ion-list>
+
+
+
+
+
+
+    <ng-template #mensaje>
+      <h5 class="void-message">No tiene ninguna operacion bloqueada</h5>
+    </ng-template>
+
+
+  </ng-template>
+
+
+
+
+
 
 </ion-content>

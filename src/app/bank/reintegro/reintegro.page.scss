@@ -1,3 +1,24 @@
+@import '../../../colores.scss';
+
 .background-color-light-grey{
     background-color: #dbdbdb;
+}
+
+.void-message{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    border-bottom: 2px solid $violeta;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    color: $light_violeta;
+}
+
+
+.contenedor-spinner{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
 }

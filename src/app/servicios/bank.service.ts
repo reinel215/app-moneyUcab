@@ -11,6 +11,8 @@ export class BankService {
 
   private transacciones : Transaccion[];
 
+  private bloqueadas : Transaccion[];
+
   private saldo : number = 0;
 
   constructor(private http : HttpClient) { }
@@ -25,7 +27,6 @@ export class BankService {
     let objeto = await this.http.get<any>('http://my-json-server.typicode.com/reinel215/fakeAPI/saldo').toPromise();
     this.saldo = objeto.saldo;
     return [this.transacciones,this.saldo];
-
   }
 
   getTransacciones(){
@@ -81,6 +82,10 @@ export class BankService {
   }
 
 
+  async actualizarBloqueadas(){
+    this.bloqueadas = await this.http.get<Transaccion[]>('http://my-json-server.typicode.com/reinel215/fakeAPI/bloqueadas').toPromise();
+    return this.bloqueadas;
+  }
 
 
 

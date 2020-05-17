@@ -11,8 +11,8 @@ import { UsuarioService } from "../servicios/usuario.service";
 })
 export class BankPage implements OnInit {
   cargando : boolean = true;
-  transacciones : any;
-  saldo : any ;
+  transacciones : number | Transaccion[];
+  saldo : number | Transaccion[] ;
 
 
 

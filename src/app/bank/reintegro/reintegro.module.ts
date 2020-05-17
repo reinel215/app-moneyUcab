@@ -8,13 +8,17 @@ import { ReintegroPageRoutingModule } from './reintegro-routing.module';
 
 import { ReintegroPage } from './reintegro.page';
 
+import { BloqueadaCardComponent } from "../../componentes/bloqueada-card/bloqueada-card.component";
+import { PipeModule } from "../../pipes/pipes.module";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ReintegroPageRoutingModule
+    ReintegroPageRoutingModule,
+    PipeModule
   ],
-  declarations: [ReintegroPage]
+  declarations: [ReintegroPage ,BloqueadaCardComponent]
 })
 export class ReintegroPageModule {}
