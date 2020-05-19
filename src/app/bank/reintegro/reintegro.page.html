@@ -22,7 +22,7 @@
     
     <ion-list class="background-color-light-grey" *ngIf="hayBloqueadas else mensaje" >
 
-      <app-bloqueada-card *ngFor="let bloqueada of bloqueadas" [transaccion]="bloqueada"></app-bloqueada-card>
+      <app-bloqueada-card (reintegrar)="onReintegro($event)" *ngFor="let bloqueada of bloqueadas" [transaccion]="bloqueada"></app-bloqueada-card>
 
 
     </ion-list>
@@ -40,7 +40,7 @@
   </ng-template>
 
 
-
+  
 
 
 

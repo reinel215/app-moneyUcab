@@ -1,0 +1,37 @@
+.bold{
+    font-weight: bold;
+}
+
+.full-right{
+    right: 0;
+}
+
+
+.position-absolute{
+    position: absolute;
+}
+
+.margin-top-5p{
+    margin-top: 5px;
+}
+
+
+
+.text-overflow{
+    position: absolute;
+
+    width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.inline{
+    display: inline;
+}
+
+
+.card-button{
+    display: block;
+}

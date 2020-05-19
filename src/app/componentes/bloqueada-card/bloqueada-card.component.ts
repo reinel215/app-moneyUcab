@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { Transaccion } from "../../interfaces/transaccion";
+import { BankService } from 'src/app/servicios/bank.service';
 
 
 @Component({
@@ -10,9 +11,15 @@ import { Transaccion } from "../../interfaces/transaccion";
 export class BloqueadaCardComponent implements OnInit {
 
   @Input() transaccion : Transaccion;
+  @Output() reintegrar : EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(private bankService: BankService) { }
 
   ngOnInit() {}
+
+  reintegro(){
+    this.reintegrar.emit(this.transaccion.numReferencia);
+  }
+
 
 }

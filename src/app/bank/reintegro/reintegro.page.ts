@@ -13,9 +13,17 @@ export class ReintegroPage implements OnInit {
   hayBloqueadas : boolean = true;
   cargando : boolean = true;
 
+
+
   constructor(private bankService : BankService) { }
 
   ngOnInit() {
+    if (this.bankService.yaloHice) {
+      this.bloqueadas = this.bankService.getBloqueadas();
+      this.cargando = false
+      return;// borrar luego esto
+    }
+
     this.bankService.actualizarBloqueadas()
     .then( (data)=> {
 
@@ -24,10 +32,23 @@ export class ReintegroPage implements OnInit {
 
       this.bloqueadas = data;
       this.cargando = false;
+
+      this.bankService.yaloHice = true; //borrar luego esto
     } )
   }
 
   ionViewWillEnter(){
+  }
+
+
+
+  onReintegro(numReferencia){
+    let operacion = this.bloqueadas.find( (operacion) => operacion.numReferencia===numReferencia );
+
+    this.bankService.pagar(operacion.cuenta,operacion.cantidad,operacion.descripcion);
+    this.bankService.deleteBloqueadas(operacion.numReferencia);
+
+    this.bloqueadas = this.bloqueadas.filter( (operacion) => operacion.numReferencia!==numReferencia );
   }
 
 }

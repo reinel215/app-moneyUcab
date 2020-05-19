@@ -16,8 +16,7 @@ export class RecargarPage implements OnInit {
 
   constructor(private validarCamposService : ValidarCamposService, private bankService: BankService, public toastController : ToastController) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async presentToast(color : string, mensaje : string) {
     const toast = await this.toastController.create({

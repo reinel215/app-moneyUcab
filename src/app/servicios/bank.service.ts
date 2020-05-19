@@ -18,6 +18,7 @@ export class BankService {
   constructor(private http : HttpClient) { }
 
 
+  public yaloHice : boolean = false; //atributo para ayudar a la simulacion;
 
 
 
@@ -47,11 +48,11 @@ export class BankService {
     return this.saldo;
   }
 
-  recargar( cuenta: string, cantidad : number, descripcion : string ){
+  recargar( cuenta: string, monto : number, descripcion : string ){
     this.numReferenciaPrueba++;
 
     var newTransaccion : Transaccion =  {
-      cantidad : cantidad,
+      cantidad : monto,
       cuenta : cuenta,
       descripcion : descripcion,
       fecha : new Date(),
@@ -61,6 +62,7 @@ export class BankService {
     };
 
     this.transacciones.push(newTransaccion);
+    this.saldo+=monto
   }
 
 
@@ -76,9 +78,9 @@ export class BankService {
       modalidad : 'm',
       numReferencia : this.numReferenciaPrueba
     }
-
     this.transacciones.push(newTransaccion);
     this.saldo-=monto;
+
   }
 
 
@@ -87,6 +89,12 @@ export class BankService {
     return this.bloqueadas;
   }
 
+  deleteBloqueadas(numeroReferencia){
+    this.bloqueadas = this.bloqueadas.filter( operacion => numeroReferencia!==operacion.numReferencia);
+  }
 
+  getBloqueadas(){
+    return this.bloqueadas;
+  }
 
 }
